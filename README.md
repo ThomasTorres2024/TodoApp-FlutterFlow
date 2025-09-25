@@ -1,3 +1,7 @@
-# TodoApp-FlutterFlow
+# To DO App 2
 
-For CSC 305 at URI
+A new Flutter project.
+
+## Getting Started
+
+FlutterFlow projects are built to run on the Flutter _stable_ release.
