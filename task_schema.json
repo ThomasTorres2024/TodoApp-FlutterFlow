@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task",
+  "description": "Schema for task documents in the To Do App for CSC 305",
+  "type": "object",
+  "properties": {
+    "completed": {
+      "description": "If the task has been completed or not",
+      "type": "boolean"
+    },
+    "created": {
+      "description": "Time when the task was created",
+      "type": "string",
+      "format": "date-time"
+    },
+    "details": {
+      "description": "Details of the task, what the task is supposed to be for the user",
+      "type": "string"
+    },
+    "title": {
+      "description": "The title of the task",
+      "type": "string"
+    },
+    "user": {
+      "description": "The user that the task belongs to",
+      "type": "string"
+    }
+  },
+  "required": ["completed", "created", "title", "user"]
+}

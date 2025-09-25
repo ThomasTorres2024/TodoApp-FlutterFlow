@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "User",
+  "description": "Schema for user documents in Firestore",
+  "type": "object",
+  "properties": {
+    "uid": {
+      "description": "Unique identifier for the user",
+      "type": "string"
+    },
+    "photo_url": {
+      "description": "URL of the user's profile photo",
+      "type": "string"
+    },
+    "location": {
+      "description": "The location of the user, whatever location they enetered on creation",
+      "type": "string"
+    },
+    "email": {
+      "description": "User's email address",
+      "type": "string"
+    },
+    "display_name": {
+      "description": "User's display name",
+      "type": "string"
+    },
+    "created_time": {
+      "description": "When the account was created",
+      "type": "timestamp",
+      "format": "date-time"
+    },
+    "birthday": {
+        "description": "Birthday of the user",
+        "type": "timestamp",
+        "format": "date-time"
+    }
+  },
+  "required": ["created_time", "email", "uid"]
+}
