@@ -1,7 +1,3 @@
-# To DO App 2
+# To Do App 
 
-A new Flutter project.
-
-## Getting Started
-
-FlutterFlow projects are built to run on the Flutter _stable_ release.
+Flutterflow project for CSC305 at URI
