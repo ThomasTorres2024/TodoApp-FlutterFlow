@@ -87,25 +87,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : LoginWidget(),
         ),
         FFRoute(
-          name: LoginWidget.routeName,
-          path: LoginWidget.routePath,
-          builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
-            name: TasksWidget.routeName,
-            path: TasksWidget.routePath,
-            builder: (context, params) => params.isEmpty
-                ? NavBarPage(initialPage: 'tasks')
-                : NavBarPage(
-                    initialPage: 'tasks',
-                    page: TasksWidget(),
-                  )),
-        FFRoute(
-          name: OnboardingWidget.routeName,
-          path: OnboardingWidget.routePath,
-          builder: (context, params) => OnboardingWidget(),
-        ),
-        FFRoute(
           name: DetailsWidget.routeName,
           path: DetailsWidget.routePath,
           asyncParams: {
@@ -126,7 +107,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 : NavBarPage(
                     initialPage: 'completed',
                     page: CompletedWidget(),
-                  ))
+                  )),
+        FFRoute(
+          name: LoginWidget.routeName,
+          path: LoginWidget.routePath,
+          builder: (context, params) => LoginWidget(),
+        ),
+        FFRoute(
+            name: TasksWidget.routeName,
+            path: TasksWidget.routePath,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'tasks')
+                : NavBarPage(
+                    initialPage: 'tasks',
+                    page: TasksWidget(),
+                  )),
+        FFRoute(
+          name: OnboardingWidget.routeName,
+          path: OnboardingWidget.routePath,
+          builder: (context, params) => OnboardingWidget(),
+        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

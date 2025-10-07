@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'login_widget.dart' show LoginWidget;
@@ -97,6 +98,9 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
     return null;
   }
+
+  // Stores action output result for [Backend Call - API (zenQuotesQuery)] action in Login-Button widget.
+  ApiCallResponse? apiResultv0i;
 
   @override
   void initState(BuildContext context) {

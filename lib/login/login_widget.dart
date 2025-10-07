@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1066,6 +1067,21 @@ class _LoginWidgetState extends State<LoginWidget>
                                   !_model.formKey1.currentState!.validate()) {
                                 return;
                               }
+                              _model.apiResultv0i =
+                                  await ZenQuotesQueryCall.call();
+
+                              if ((_model.apiResultv0i?.succeeded ?? true)) {
+                                FFAppState().zenQuote = getJsonField(
+                                  (_model.apiResultv0i?.jsonBody ?? ''),
+                                  r'''$[0]['q']''',
+                                ).toString();
+                                safeSetState(() {});
+                              } else {
+                                FFAppState().zenQuote =
+                                    'This is a default zen quote if the API fails.';
+                                safeSetState(() {});
+                              }
+
                               GoRouter.of(context).prepareAuthEvent();
 
                               final user = await authManager.signInWithEmail(
@@ -1079,6 +1095,8 @@ class _LoginWidgetState extends State<LoginWidget>
 
                               context.goNamedAuth(
                                   TasksWidget.routeName, context.mounted);
+
+                              safeSetState(() {});
                             },
                             text: 'Login',
                             options: FFButtonOptions(
