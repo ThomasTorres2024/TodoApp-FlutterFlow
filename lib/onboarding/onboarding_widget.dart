@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -569,8 +570,23 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           birthday: _model.datePicked,
                           location: _model.textController2.text,
                         ));
+                        _model.apiResultssy = await ZenQuotesQueryCall.call();
+
+                        if ((_model.apiResultssy?.succeeded ?? true)) {
+                          FFAppState().zenQuote = getJsonField(
+                            (_model.apiResultssy?.jsonBody ?? ''),
+                            r'''$[0]['q']''',
+                          ).toString();
+                          safeSetState(() {});
+                        } else {
+                          FFAppState().zenQuote =
+                              'What the mind can conceive and believe, and the heart desire, you can achieve';
+                          safeSetState(() {});
+                        }
 
                         context.goNamed(TasksWidget.routeName);
+
+                        safeSetState(() {});
                       },
                       text: 'Complete Profile',
                       options: FFButtonOptions(
